@@ -79,3 +79,4 @@ function showWeatherForecast(data) {
         forecastContainer.append(forecastCard);
     });
 }
+
