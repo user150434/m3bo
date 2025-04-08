@@ -16,9 +16,9 @@
             <h2>Devices</h2>
             <div class="device-group">
                 <ul class="device-list">
-                    <li class="device-item">temperatuur</li>
-                    <li class="device-item">kaart</li>
-                    <li class="device-item">energie verbruik</li>
+                    <a class="device-item" href="tempartuur.html">tempartuur</a>
+                    <a class="device-item" href="kaart.html">kaart</a>
+                    <li class="device-item">energie verbruik</li> 
                     <li class="device-item">lampjes</li>
                 </ul>
             </div>
@@ -46,15 +46,22 @@
             </div>
         </div>
 
-        <div class="main-content">
-            <div class="card">
-                <h2>binnen temperatuur</h2>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                  </label>
-            </div>
+
+<div class="main-content">
+    <div class="card">
+        <div class="temperature-header">
+            <h2>binnen temperatuur</h2>
         </div>
+        <label class="switch">
+            <input type="checkbox" id="room-toggle">
+            <span class="slider round"></span>
+        </label>
+        <div class="box">
+            <p id="inside-temperature">--°C</p>
+        </div>
+        <p id="sensor-status">Sensor verbinden...</p>
+    </div>
+</div>
 
         <div class="main-content">
             <div class="card">
