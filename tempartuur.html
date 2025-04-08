@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Dashboard</title>
+    <link rel="stylesheet" href="Ostyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="Omain.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Devices</h2>
+            <div class="device-group">
+                <ul class="device-list">
+                    <a class="device-item" href="tempartuur.html">tempartuur</a>
+                    <a class="device-item" href="kaart.html">kaart</a>
+                    <li class="device-item">energie verbruik</li> 
+                    <li class="device-item">lampjes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="card" id="weather-info" style="display: none;">
+                <h2>buiten  temperatuur</h2>
+                <div class="box">
+                    <p id="city-name"></p>
+                </div>
+                <div class="box">
+                    <p id="date"></p>
+                </div>
+                <div class="box">
+                    <p id="temperature"></p>
+                </div>
+                <div class="box">
+                    <p id="description"></p>
+                </div>
+                <div class="box">
+                    <p id="wind-speed"></p>
+                </div>
+            </div>
+        </div>
+
+
+<div class="main-content">
+    <div class="card">
+        <div class="temperature-header">
+            <h2>binnen temperatuur</h2>
+        </div>
+        <label class="switch">
+            <input type="checkbox" id="room-toggle">
+            <span class="slider round"></span>
+        </label>
+        <div class="box">
+            <p id="inside-temperature">--°C</p>
+        </div>
+        <p id="sensor-status">Sensor verbinden...</p>
+    </div>
+</div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2>Weer voorspelling</h2>
+                <div id="forecast-container" class="forecast-container"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
