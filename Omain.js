@@ -86,7 +86,7 @@ function showWeatherForecast(data) {
 
 // DHT11 Sensor Data Fetching
 
- 
+
 document.addEventListener("DOMContentLoaded", function () {
     fetch('https://39035.hosts2.ma-cloud.nl/m3bo/post.php')
         .then(response => response.json())
@@ -99,4 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 });
+
+
 
