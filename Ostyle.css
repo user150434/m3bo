@@ -82,6 +82,7 @@ h3 {
     box-shadow: var(--shadow);
     text-align: center;
     margin: 0 auto;
+    margin-top: 2rem;
 }
 
 .box {

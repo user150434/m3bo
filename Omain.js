@@ -84,67 +84,19 @@ function showWeatherForecast(data) {
 
 
 
+// DHT11 Sensor Data Fetching
 
-// Add to your Omain.js
-// DHT11 Temperature Monitoring
-let currentRoom = 'whole-house';
+ 
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('https://39035.hosts2.ma-cloud.nl/m3bo/post.php')
+        .then(response => response.json())
+        .then(data => {
 
-$(document).ready(function() {
-    // Existing weather code
-    getCurrentWeather('Amsterdam');
-    getWeatherForecast('Amsterdam');
-    
-    // New temperature monitoring
-    $('#room-toggle').change(function() {
-        currentRoom = this.checked ? 'specific-room' : 'whole-house';
-        updateTemperatureDisplay();
-    });
-    
-    setInterval(updateTemperatureDisplay, 2000);
+            const tempElement = document.getElementById("temp");
+
+            if (data.dht11.temperature) {
+                tempElement.textContent = `${data.dht11.temperature}°C`;
+            }
+        });
 });
 
-async function updateTemperatureDisplay() {
-    try {
-        const response = await fetch(`http://localhost:3000/temperature?room=${currentRoom}`);
-        const data = await response.json();
-        
-        $('#inside-temperature').html(`${data.temperature}°C`);
-        $('#sensor-status').html(
-            `Live data (${currentRoom === 'whole-house' ? 'Hele huis' : 'Specifieke kamer'}) · ±2°C nauwkeurigheid`
-        );
-        
-    } catch (error) {
-        console.error('Sensor error:', error);
-        $('#sensor-status').html('Sensor niet verbonden');
-        $('#inside-temperature').html('--°C');
-    }
-}
-
-
-// Add room simulation logic to your server.js
-let currentTemp = 21.0; // Default temp
-
-// Simulate different room temperatures
-setInterval(() => {
-    // Random fluctuation between -0.5 and +0.5
-    const fluctuation = (Math.random() - 0.5); 
-    currentTemp += fluctuation;
-    
-    // Keep within DHT11 range (0-50°C)
-    currentTemp = Math.max(0, Math.min(50, currentTemp));
-}, 5000);
-
-app.get('/temperature', (req, res) => {
-    const room = req.query.room;
-    let temp = currentTemp;
-    
-    // Add room-specific offsets
-    if (room === 'specific-room') {
-        temp += 1.5; // Simulate different room temp
-    }
-    
-    res.json({ 
-        temperature: temp.toFixed(1),
-        sensor: 'DHT11'
-    });
-});
